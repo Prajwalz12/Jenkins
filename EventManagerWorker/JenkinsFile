@@ -39,16 +39,18 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_FILE')]) {
-                    sh '''
-                        export KUBECONFIG=$KUBECONFIG_FILE
-                        kubectl set image deployment/demoeventmanagerworker your-container-name=''' + "${IMAGE_NAME}:${IMAGE_TAG}" + ''' --namespace=democode
-                        kubectl rollout status deployment/demoeventmanagerworker --namespace=democode
-                    '''
+                    dir('EventManagerWorker') {
+                        sh '''
+                            export KUBECONFIG=$KUBECONFIG_FILE
+                            # Replace image tag in deployment file before applying
+                            sed -i "s|IMAGE_PLACEHOLDER|${IMAGE_NAME}:${IMAGE_TAG}|g" deployment.yml
+                            kubectl apply -f deployment.yml --namespace=democode
+                        '''
+                    }
                 }
             }
         }
     }
-
     post {
         always {
             echo 'Pipeline completed.'
