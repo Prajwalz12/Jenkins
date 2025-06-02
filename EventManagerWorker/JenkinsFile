@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'prajwal1209/docker-agent'
+            image 'prajwal1209/docker-agent:v1.13'
             args '-v /var/run/docker.sock:/var/run/docker.sock -u root' // So docker commands inside agent can access host docker
         }
     }
