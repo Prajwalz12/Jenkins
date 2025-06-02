@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'docker:latest'
-            args '-v /var/run/docker.sock:/var/run/docker.sock' // So docker commands inside agent can access host docker
+            args '-v /var/run/docker.sock:/var/run/docker.sock -u root' // So docker commands inside agent can access host docker
         }
     }
     environment {
