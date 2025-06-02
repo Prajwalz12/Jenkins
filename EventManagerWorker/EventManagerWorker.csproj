@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<UserSecretsId>dotnet-EventManagerWorker-A3D8A5D3-515E-404A-AA5C-A353AB69C41B</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Remove="OpenApiJSON\EventManagerApi.json" />
+		<Content Remove="OpenApiJSON\UtilService.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="7.0.2">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+		<PackageReference Include="Confluent.Kafka" Version="2.5.2" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+		<PackageReference Include="MongoDB.Driver" Version="2.28.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="MySqlConnector" Version="2.3.7" />
+		<PackageReference Include="MySqlConnector.Logging.Microsoft.Extensions.Logging" Version="2.1.0" />
+		<PackageReference Include="NSwag.AspNetCore" Version="14.1.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.0" />
+
+		<PackageReference Include="Serilog" Version="4.0.1" />
+		<PackageReference Include="Serilog.AspNetCore" Version="8.0.2" />
+		<PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />
+		<PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
+		<PackageReference Include="Serilog.Sinks.Elasticsearch" Version="10.0.0" />
+		<PackageReference Include="Serilog.Sinks.AzureDataExplorer" Version="1.1.1" />
+		<PackageReference Include="NSwag.ApiDescription.Client" Version="14.1.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<OpenApiReference Include="OpenApiJSON/MongoService.json" CodeGenerator="NSwagCSharp" Namespace="MongoService">
+			<ClassName>MongoServiceClient</ClassName>
+			<OutputPath>MongoServiceClient.cs</OutputPath>
+			<Options> /AdditionalNamespaceUsages:ApiExceptions /DateType:System.DateTime /DateTimeType:System.DateTime /OperationGenerationMode:SingleClientFromOperationId</Options>
+			<NSwagGenerateExceptionClasses>false</NSwagGenerateExceptionClasses>
+		</OpenApiReference>
+		<OpenApiReference Include="OpenApiJSON/DBService.json" CodeGenerator="NSwagCSharp" Namespace="DBService">
+			<ClassName>DBServiceClient</ClassName>
+			<OutputPath>DBServiceClient.cs</OutputPath>
+			<Options>/AdditionalNamespaceUsages:ApiExceptions /DateType:System.DateTime /DateTimeType:System.DateTime /OperationGenerationMode:SingleClientFromOperationId</Options>
+			<NSwagGenerateExceptionClasses>false</NSwagGenerateExceptionClasses>
+		</OpenApiReference>
+		<OpenApiReference Include="OpenApiJSON/EventManagerApi.json" CodeGenerator="NSwagCSharp" Namespace="EventManagerApi">
+			<ClassName>EventManagerApiClient</ClassName>
+			<OutputPath>EventManagerApiClient.cs</OutputPath>
+			<Options> /AdditionalNamespaceUsages:ApiExceptions /DateType:System.DateTime /DateTimeType:System.DateTime /OperationGenerationMode:SingleClientFromOperationId</Options>
+			<NSwagGenerateExceptionClasses>false</NSwagGenerateExceptionClasses>
+		</OpenApiReference>
+		<OpenApiReference Include="OpenApiJSON\UtilService.json" CodeGenerator="NSwagCSharp" Namespace="UtilService">
+			<ClassName>UtilServiceClient</ClassName>
+			<OutputPath>UtilServiceClient.cs</OutputPath>
+			<Options> /AdditionalNamespaceUsages:ApiExceptions /DateType:System.DateTime /DateTimeType:System.DateTime /OperationGenerationMode:SingleClientFromOperationId</Options>
+			<NSwagGenerateExceptionClasses>false</NSwagGenerateExceptionClasses>
+		</OpenApiReference>
+		<!--<OpenApiReference Include="OpenApiJSON/BFLPWAAPI.json" CodeGenerator="NSwagCSharp" Namespace="BFLPWAAPI">
+			<ClassName>{controller}Client</ClassName>
+			<OutputPath>BFLPWAAPIClient.cs</OutputPath>
+			<Options>GenerateExceptionClasses:false /AdditionalNamespaceUsages:ApiExceptions /DateType:System.DateTime /DateTimeType:System.DateTime</Options>
+		</OpenApiReference>-->
+		<OpenApiReference Include="OpenApiJSON/LobMonthlyBudgetCappingApi.json" CodeGenerator="NSwagCSharp" Namespace="LobMonthlyBudgetCappingApi">
+			<ClassName>LobMonthlyBudgetCappingApiClient</ClassName>
+			<OutputPath>LobMonthlyBudgetCappingApiClient.cs</OutputPath>
+			<Options>/AdditionalNamespaceUsages:ApiExceptions /DateType:System.DateTime /DateTimeType:System.DateTime /OperationGenerationMode:SingleClientFromOperationId</Options>
+			<NSwagGenerateExceptionClasses>false</NSwagGenerateExceptionClasses>
+		</OpenApiReference>
+	</ItemGroup>
+</Project>

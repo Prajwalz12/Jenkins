@@ -1,1 +1,2 @@
-# Jenkins
+
+This worker service subscribes to the message queue (queue where the [eventmanager api](https://easyrewardz.visualstudio.com/BFL_Upgrade/_git/EventManagerApi) pushes the data), process it and sends to Campaign Execution Worker service.

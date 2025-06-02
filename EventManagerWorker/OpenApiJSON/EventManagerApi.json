@@ -1,0 +1,1133 @@
+{
+  "x-generator": "NSwag v14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Event Managaer API.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://bfsietlapi.erzqa.com"
+    },
+    {
+      "url": "http://bfsietlapi.erzqa.com"
+    }
+  ],
+  "paths": {
+    "/Customers": {
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "Customers_Post",
+        "requestBody": {
+          "x-name": "customerRequest",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Customers/CreateUpdateCustomer": {
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "Customers_CreateUpdateCustomer",
+        "parameters": [
+          {
+            "name": "isSignUp",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "x-name": "customerRequest",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/identity": {
+      "get": {
+        "tags": [
+          "Identity"
+        ],
+        "operationId": "Identity_Get",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MissingTransactionReprocess": {
+      "post": {
+        "tags": [
+          "MissingTransactionReprocess"
+        ],
+        "operationId": "MissingTransactionReprocess_Post",
+        "requestBody": {
+          "x-name": "missingTransactionReprocessRequest",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MissingTransactionReprocessRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MultiMissingTransactionReprocessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RedisSeed/all": {
+      "get": {
+        "tags": [
+          "RedisSeed"
+        ],
+        "operationId": "RedisSeed_Get",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RedisSeed/eventcode": {
+      "get": {
+        "tags": [
+          "RedisSeed"
+        ],
+        "operationId": "RedisSeed_EventCode",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RedisSeed/offertype": {
+      "get": {
+        "tags": [
+          "RedisSeed"
+        ],
+        "operationId": "RedisSeed_OfferType",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RedisSeed/lob": {
+      "get": {
+        "tags": [
+          "RedisSeed"
+        ],
+        "operationId": "RedisSeed_Lob",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RedisSeed/channelcode": {
+      "get": {
+        "tags": [
+          "RedisSeed"
+        ],
+        "operationId": "RedisSeed_ChannelCode",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RedisSeed/paymentcategory": {
+      "get": {
+        "tags": [
+          "RedisSeed"
+        ],
+        "operationId": "RedisSeed_PaymentCategory",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RedisSeed/paymentinstrument": {
+      "get": {
+        "tags": [
+          "RedisSeed"
+        ],
+        "operationId": "RedisSeed_PaymentInstrument",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RedisSeed/customertype": {
+      "get": {
+        "tags": [
+          "RedisSeed"
+        ],
+        "operationId": "RedisSeed_CustomerType",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RedisSeed/merchantcategory": {
+      "get": {
+        "tags": [
+          "RedisSeed"
+        ],
+        "operationId": "RedisSeed_MerchantCategory",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RedisSeed/bbpscategory": {
+      "get": {
+        "tags": [
+          "RedisSeed"
+        ],
+        "operationId": "RedisSeed_BBPSCategory",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RedisSeed/installsource": {
+      "get": {
+        "tags": [
+          "RedisSeed"
+        ],
+        "operationId": "RedisSeed_InstallSource",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RedisSeed/childEventCode": {
+      "get": {
+        "tags": [
+          "RedisSeed"
+        ],
+        "operationId": "RedisSeed_ChildEventCode",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RedisSeed/burnRules": {
+      "get": {
+        "tags": [
+          "RedisSeed"
+        ],
+        "operationId": "RedisSeed_BurnRules",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Transactions": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "Transactions_Post",
+        "requestBody": {
+          "x-name": "transactionRequest",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransactionRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CustomerResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CustomerRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobileNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "oldMobileNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "flags": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/FlagRequest"
+              }
+            ]
+          },
+          "signUpDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "upiId": {
+            "type": "string",
+            "nullable": true
+          },
+          "walletBalance": {
+            "type": "string",
+            "nullable": true
+          },
+          "kyc": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/KYCRequest"
+              }
+            ]
+          },
+          "installMedium": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InstallMedium"
+              }
+            ]
+          },
+          "subscriptionTier": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SubscriptionTier"
+              }
+            ]
+          },
+          "subscriptionLob": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "FlagRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "delinquency": {
+            "type": "boolean"
+          },
+          "wallet": {
+            "type": "boolean"
+          },
+          "dormant": {
+            "type": "boolean"
+          }
+        }
+      },
+      "KYCRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "InstallMedium": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "string",
+            "nullable": true
+          },
+          "channel": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "SubscriptionTier": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "tierId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tierName": {
+            "type": "string",
+            "nullable": true
+          },
+          "tierRank": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isPrimary": {
+            "type": "boolean"
+          }
+        }
+      },
+      "MultiMissingTransactionReprocessResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "missingTransactionReprocessResponse": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/MissingTransactionReprocessResponse"
+            }
+          }
+        }
+      },
+      "MissingTransactionReprocessResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "transactionReferenceNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "statusMessage": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "MissingTransactionReprocessRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "transactionReferenceNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "isGetRecordFromCollection": {
+            "type": "boolean"
+          }
+        }
+      },
+      "TransactionResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventId": {
+            "type": "string",
+            "nullable": true
+          },
+          "refNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "TransactionRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "lob": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "eventId": {
+            "type": "string",
+            "nullable": true
+          },
+          "childEventId": {
+            "type": "string",
+            "nullable": true
+          },
+          "channelCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "productCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "campaign": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Campaign"
+              }
+            ]
+          },
+          "products": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            }
+          },
+          "utm": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UTM"
+              }
+            ]
+          },
+          "transaction": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TransactionDetailRequest"
+              }
+            ]
+          },
+          "emandateflg": {
+            "type": "boolean"
+          },
+          "isTnCAccepted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Campaign": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "rewardedFlg": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "journey": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "purchaseType": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          }
+        }
+      },
+      "UTM": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "string",
+            "nullable": true
+          },
+          "campaign": {
+            "type": "string",
+            "nullable": true
+          },
+          "medium": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "TransactionDetailRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "refNumber": {
+            "type": "string",
+            "pattern": "^[^^'\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "isRedeem": {
+            "type": "boolean"
+          },
+          "type": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "dateTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "emandateflg": {
+            "type": "boolean"
+          },
+          "payments": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/PaymentRequest"
+            }
+          },
+          "biller": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Biller"
+              }
+            ]
+          },
+          "loanAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "merchantOrDealer": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/MerchantOrDealer"
+              }
+            ]
+          },
+          "qr": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QRRequest"
+              }
+            ]
+          },
+          "emi": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EMIRequest"
+              }
+            ]
+          },
+          "wallet": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/WalletRequest"
+              }
+            ]
+          },
+          "customer": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CustomerRequest2"
+              }
+            ]
+          },
+          "voucher": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Voucher"
+              }
+            ]
+          },
+          "referAndEarn": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ReferralObjectRequest"
+              }
+            ]
+          },
+          "subscriptionId": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "PaymentRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "instrument": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "mode": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "Biller": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          }
+        }
+      },
+      "MerchantOrDealer": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "groupId": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "source": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "QRRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "version": {
+            "type": "string",
+            "nullable": true
+          },
+          "scanFlg": {
+            "type": "boolean"
+          }
+        }
+      },
+      "EMIRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "bounceFlg": {
+            "type": "boolean"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "WalletRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDateTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "loadDateTime": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CustomerRequest2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CustomerCommonProperty"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "mobile": {
+                "type": "string",
+                "pattern": "^(?:[0-9]{10}|)$",
+                "nullable": true
+              },
+              "vpa": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/VPARequest"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "VPARequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDateTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CustomerCommonProperty": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kycUpgradeFlg": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "destinationMobile": {
+            "type": "string",
+            "pattern": "^(?:[0-9]{10}|)$",
+            "nullable": true
+          },
+          "destinationVPAId": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "pattern": "^[^^\u003C\u003E‘\"“%!$*~^)(]*$",
+            "nullable": true
+          },
+          "customerType": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Voucher": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "denomination": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ReferralObjectRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isReferAndEarn": {
+            "type": "string",
+            "nullable": true
+          },
+          "referrer": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1122 @@
+{
+  "x-generator": "NSwag v14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "My Title",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://bfllobmonthlybudgetcappingapi.erzqa.com"
+    }
+  ],
+  "paths": {
+    "/api/LobMonthlyBudgetCustomerSummary/GetAvailableBudget": {
+      "post": {
+        "tags": [
+          "LobMonthlyBudgetCustomerSummary"
+        ],
+        "operationId": "LobMonthlyBudgetCustomerSummary_GetAvailableBudget",
+        "requestBody": {
+          "x-name": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LobMonthlyBudgetCustomerSummaryRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfLobMonthlyBudgetCustomerSummary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/LobMonthlyBudgetCustomerSummary": {
+      "post": {
+        "tags": [
+          "LobMonthlyBudgetCustomerSummary"
+        ],
+        "operationId": "LobMonthlyBudgetCustomerSummary_UpdateLobBudgetSummaryAndLedger",
+        "requestBody": {
+          "x-name": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LobMonthlyBudgetCustomerLedger"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfBoolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ResponseOfLobMonthlyBudgetCustomerSummary": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/LobMonthlyBudgetCustomerSummary"
+          }
+        }
+      },
+      "LobMonthlyBudgetCustomerSummary": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "company": {
+            "type": "string",
+            "nullable": true
+          },
+          "month": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lob": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobileNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalBudget": {
+            "type": "number",
+            "format": "double"
+          },
+          "consumedBudget": {
+            "type": "number",
+            "format": "double"
+          },
+          "availableBudget": {
+            "type": "number",
+            "format": "double"
+          },
+          "createdOn": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedOn": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "LobMonthlyBudgetCustomerSummaryRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "company": {
+            "type": "string",
+            "nullable": true
+          },
+          "month": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lob": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobileNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "ResponseOfBoolean": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "boolean"
+          }
+        }
+      },
+      "LobMonthlyBudgetCustomerLedger": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "company": {
+            "type": "string",
+            "nullable": true
+          },
+          "month": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lob": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobileNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "rewardMode": {
+            "type": "string",
+            "nullable": true
+          },
+          "rewardValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "rewardAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "createdOn": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cashbackReward": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CashbackIssueRequest"
+              }
+            ]
+          },
+          "pointsReward": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PointIssueRequest"
+              }
+            ]
+          },
+          "promoVoucherReward": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PromoVoucherIssueRequest"
+              }
+            ]
+          }
+        }
+      },
+      "CashbackIssueRequest": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CommonIssuenceRequest"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "mobileNumber": {
+                "type": "string",
+                "nullable": true
+              },
+              "custLoyaltyFraudStatus": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "txnId": {
+                "type": "string",
+                "nullable": true
+              },
+              "txnRefId": {
+                "type": "string",
+                "nullable": true
+              },
+              "txnDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "cashback": {
+                "type": "number",
+                "format": "double"
+              },
+              "lob": {
+                "type": "string",
+                "nullable": true
+              },
+              "campaignId": {
+                "type": "string",
+                "nullable": true
+              },
+              "issueInState": {
+                "type": "string",
+                "nullable": true
+              },
+              "lockExpireDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "isLockExpires": {
+                "type": "boolean"
+              },
+              "paymentCategory": {
+                "type": "string",
+                "nullable": true
+              },
+              "paymentInstruments": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "merchantId": {
+                "type": "string",
+                "nullable": true
+              },
+              "grpMerchantId": {
+                "type": "string",
+                "nullable": true
+              },
+              "merchantSource": {
+                "type": "string",
+                "nullable": true
+              },
+              "expiryDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "isAccure": {
+                "type": "boolean"
+              },
+              "isScratched": {
+                "type": "boolean"
+              },
+              "narration": {
+                "type": "string",
+                "nullable": true
+              },
+              "amount": {
+                "type": "number",
+                "format": "decimal"
+              },
+              "loanAmount": {
+                "type": "number",
+                "format": "decimal"
+              },
+              "eventId": {
+                "type": "string",
+                "nullable": true
+              },
+              "childEventCode": {
+                "type": "string",
+                "nullable": true
+              },
+              "parentTransactionId": {
+                "type": "string",
+                "nullable": true
+              },
+              "billerName": {
+                "type": "string",
+                "nullable": true
+              },
+              "billerCategory": {
+                "type": "string",
+                "nullable": true
+              },
+              "merchantName": {
+                "type": "string",
+                "nullable": true
+              },
+              "promoCode": {
+                "type": "string",
+                "nullable": true
+              },
+              "walletId": {
+                "type": "string",
+                "nullable": true
+              },
+              "isOncePerCampaign": {
+                "type": "boolean"
+              },
+              "onceInLifeTime": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/OnceInLifeTime3"
+                  }
+                ]
+              },
+              "txnType": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "ctaUrl": {
+                "type": "string",
+                "nullable": true
+              },
+              "unlockTermAndCondition": {
+                "type": "string",
+                "nullable": true
+              },
+              "channelCode": {
+                "type": "string",
+                "nullable": true
+              },
+              "isReferEarn": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "onDemandExpiryNarration": {
+                "type": "string",
+                "nullable": true
+              },
+              "isBudgetControl": {
+                "type": "boolean"
+              },
+              "tnCTitle": {
+                "type": "string",
+                "nullable": true
+              },
+              "tncSubTitle": {
+                "type": "string",
+                "nullable": true
+              },
+              "headerBottomDrawer": {
+                "type": "string",
+                "nullable": true
+              },
+              "tncDescription": {
+                "type": "string",
+                "nullable": true
+              },
+              "ctaLabel1": {
+                "type": "string",
+                "nullable": true
+              },
+              "ctaLabel2": {
+                "type": "string",
+                "nullable": true
+              },
+              "ctaurL2": {
+                "type": "string",
+                "nullable": true
+              },
+              "destinationVPAId": {
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "OnceInLifeTime3": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "boolean"
+          },
+          "tags": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CommonIssuenceRequest": {
+        "type": "object",
+        "x-abstract": true,
+        "additionalProperties": false,
+        "properties": {
+          "mobileNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "txnId": {
+            "type": "string",
+            "nullable": true
+          },
+          "txnRefId": {
+            "type": "string",
+            "nullable": true
+          },
+          "childEventCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentTransactionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "narration": {
+            "type": "string",
+            "nullable": true
+          },
+          "ctaUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "isOncePerCampaign": {
+            "type": "boolean"
+          },
+          "channelCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "isReferral": {
+            "type": "boolean"
+          },
+          "isReferEarn": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "onDemandExpired": {
+            "type": "boolean"
+          },
+          "expireOnDemand": {
+            "type": "boolean"
+          },
+          "unlockAfterDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "isUnlockOnDuration": {
+            "type": "boolean"
+          },
+          "unlockTermAndCondition": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "responsysTemplateId": {
+            "type": "string",
+            "nullable": true
+          },
+          "unlockResponsysTemplateId": {
+            "type": "string",
+            "nullable": true
+          },
+          "companyCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "oncePerDestinationVPA": {
+            "type": "boolean"
+          },
+          "billerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "vpaId": {
+            "type": "string",
+            "nullable": true
+          },
+          "excludeFromBudgetCapping": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PointIssueRequest": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CommonIssuenceRequest"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "mobileNumber": {
+                "type": "string",
+                "nullable": true
+              },
+              "custLoyaltyFraudStatus": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "txnId": {
+                "type": "string",
+                "nullable": true
+              },
+              "txnRefId": {
+                "type": "string",
+                "nullable": true
+              },
+              "txnType": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "txnDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "points": {
+                "type": "number",
+                "format": "double"
+              },
+              "lob": {
+                "type": "string",
+                "nullable": true
+              },
+              "campaignId": {
+                "type": "string",
+                "nullable": true
+              },
+              "issueInState": {
+                "type": "string",
+                "nullable": true
+              },
+              "lockExpireDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "isLockExpires": {
+                "type": "boolean"
+              },
+              "paymentCategory": {
+                "type": "string",
+                "nullable": true
+              },
+              "paymentInstruments": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "merchantId": {
+                "type": "string",
+                "nullable": true
+              },
+              "grpMerchantId": {
+                "type": "string",
+                "nullable": true
+              },
+              "merchantSource": {
+                "type": "string",
+                "nullable": true
+              },
+              "isConvertedFromCashback": {
+                "type": "boolean"
+              },
+              "expiryDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "narration": {
+                "type": "string",
+                "nullable": true
+              },
+              "amount": {
+                "type": "number",
+                "format": "decimal"
+              },
+              "loanAmount": {
+                "type": "number",
+                "format": "decimal"
+              },
+              "eventId": {
+                "type": "string",
+                "nullable": true
+              },
+              "childEventCode": {
+                "type": "string",
+                "nullable": true
+              },
+              "parentTransactionId": {
+                "type": "string",
+                "nullable": true
+              },
+              "billerName": {
+                "type": "string",
+                "nullable": true
+              },
+              "billerCategory": {
+                "type": "string",
+                "nullable": true
+              },
+              "merchantName": {
+                "type": "string",
+                "nullable": true
+              },
+              "brandId": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "promoCode": {
+                "type": "string",
+                "nullable": true
+              },
+              "activeDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "activationDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "isLockExpire": {
+                "type": "boolean"
+              },
+              "isOncePerCampaign": {
+                "type": "boolean"
+              },
+              "onceInLifeTime": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/OnceInLifeTime3"
+                  }
+                ]
+              },
+              "ctaUrl": {
+                "type": "string",
+                "nullable": true
+              },
+              "unlockTermAndCondition": {
+                "type": "string",
+                "nullable": true
+              },
+              "channelCode": {
+                "type": "string",
+                "nullable": true
+              },
+              "onDemandExpiryNarration": {
+                "type": "string",
+                "nullable": true
+              },
+              "isBudgetControl": {
+                "type": "boolean"
+              },
+              "tnCTitle": {
+                "type": "string",
+                "nullable": true
+              },
+              "tncSubTitle": {
+                "type": "string",
+                "nullable": true
+              },
+              "headerBottomDrawer": {
+                "type": "string",
+                "nullable": true
+              },
+              "tncDescription": {
+                "type": "string",
+                "nullable": true
+              },
+              "ctaLabel1": {
+                "type": "string",
+                "nullable": true
+              },
+              "ctaLabel2": {
+                "type": "string",
+                "nullable": true
+              },
+              "ctaurL2": {
+                "type": "string",
+                "nullable": true
+              },
+              "destinationVPAId": {
+                "type": "string",
+                "nullable": true
+              },
+              "subscriptionId": {
+                "type": "string",
+                "nullable": true
+              },
+              "subscriptionType": {
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "PromoVoucherIssueRequest": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CommonIssuenceRequest"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "promoRewardConfiguration": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/PromoRewardConfiguration2"
+                  }
+                ]
+              },
+              "campaignId": {
+                "type": "string",
+                "nullable": true
+              },
+              "issueInState": {
+                "type": "string",
+                "nullable": true
+              },
+              "custLoyaltyFraudStatus": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "onceInLifeTime": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/OnceInLifeTime3"
+                  }
+                ]
+              },
+              "promoVoucherIssued": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/PromoVoucherIssued2"
+                }
+              },
+              "lockExpireDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "expiryDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "lob": {
+                "type": "string",
+                "nullable": true
+              },
+              "txnType": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "txnDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "amount": {
+                "type": "number",
+                "format": "double"
+              },
+              "loanAmount": {
+                "type": "number",
+                "format": "double"
+              },
+              "eventId": {
+                "type": "string",
+                "nullable": true
+              },
+              "billerName": {
+                "type": "string",
+                "nullable": true
+              },
+              "billerCategory": {
+                "type": "string",
+                "nullable": true
+              },
+              "merchantName": {
+                "type": "string",
+                "nullable": true
+              },
+              "merchantId": {
+                "type": "string",
+                "nullable": true
+              },
+              "grpMerchantId": {
+                "type": "string",
+                "nullable": true
+              },
+              "merchantSource": {
+                "type": "string",
+                "nullable": true
+              },
+              "promoCode": {
+                "type": "string",
+                "nullable": true
+              },
+              "paymentCategory": {
+                "type": "string",
+                "nullable": true
+              },
+              "paymentInstruments": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "isLockExpires": {
+                "type": "boolean"
+              },
+              "pin": {
+                "type": "string",
+                "nullable": true
+              },
+              "unlockTermAndCondition": {
+                "type": "string",
+                "nullable": true
+              },
+              "lockTxnId": {
+                "type": "string",
+                "nullable": true
+              },
+              "voucherType": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "tnCTitle": {
+                "type": "string",
+                "nullable": true
+              },
+              "tncSubTitle": {
+                "type": "string",
+                "nullable": true
+              },
+              "headerBottomDrawer": {
+                "type": "string",
+                "nullable": true
+              },
+              "tncDescription": {
+                "type": "string",
+                "nullable": true
+              },
+              "ctaLabel1": {
+                "type": "string",
+                "nullable": true
+              },
+              "ctaLabel2": {
+                "type": "string",
+                "nullable": true
+              },
+              "ctaurL2": {
+                "type": "string",
+                "nullable": true
+              },
+              "procurementPrice": {
+                "type": "number",
+                "format": "decimal"
+              },
+              "customerPrice": {
+                "type": "number",
+                "format": "decimal"
+              },
+              "maximumRetailPrice": {
+                "type": "number",
+                "format": "decimal"
+              },
+              "minimumPurchaseValue": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "destinationVPAId": {
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "PromoRewardConfiguration2": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "voucherType": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "skuId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "valueType": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "fixValue": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/RewardValueTypeFixed3"
+              }
+            ]
+          },
+          "percentageValue": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/RewardValueTypePercentage3"
+              }
+            ]
+          },
+          "validity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "staticValidDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "dynamicValidDay": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "minimumPurchaseValue": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          }
+        }
+      },
+      "RewardValueTypeFixed3": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          }
+        }
+      },
+      "RewardValueTypePercentage3": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          },
+          "maximumCashback": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          }
+        }
+      },
+      "PromoVoucherIssued2": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "mobileNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "campaignId": {
+            "type": "string",
+            "nullable": true
+          },
+          "voucherCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "pin": {
+            "type": "string",
+            "nullable": true
+          },
+          "expireDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "expireDay": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "procurementPrice": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          },
+          "customerPrice": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          },
+          "maximumRetailPrice": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          },
+          "minimumPurchaseValue": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          }
+        }
+      }
+    }
+  }
+}
