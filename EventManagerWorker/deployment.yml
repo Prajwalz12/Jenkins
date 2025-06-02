@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoeventmanagerworker
+  namespace: democode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demoeventmanagerworker
+  template:
+    metadata:
+      labels:
+        app: demoeventmanagerworker
+    spec:
+      containers:
+      - name: demoeventmanagerworker
+        image: IMAGE_PLACEHOLDER  # Jenkins will replace this
+        ports:
+        - containerPort: 80
