@@ -15,7 +15,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh "docker build -f EventManagerWorker/Dockerfile -t ${IMAGE_NAME}:${IMAGE_TAG} EventManagerWorker"
+                    sh "cd EventManagerWorker && docker build -f -t ${IMAGE_NAME}:${IMAGE_TAG} ."
                 }
             }
         }
