@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_NAME = "demoeventmanagerworker/qa"
+        IMAGE_NAME = "prajwal1209/demoeventmanagerworker"
         IMAGE_TAG = "v1.${BUILD_NUMBER}"
         KUBE_CONFIG = credentials('kubeconfig') // Jenkins credentials ID for kubeconfig file
         DOCKER_CREDENTIALS_ID = 'dockerhub-creds' // Jenkins DockerHub credentials ID
