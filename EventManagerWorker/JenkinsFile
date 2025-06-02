@@ -1,0 +1,73 @@
+pipeline {
+    agent {
+        docker {
+            image 'mcr.microsoft.com/dotnet/sdk:6.0' // Use the appropriate SDK version
+            args '-v /var/run/docker.sock:/var/run/docker.sock' // Mount Docker socket
+        }
+    }
+
+    environment {
+        IMAGE_NAME = "demoeventmanagerworker/qa"
+        IMAGE_TAG = "v1.${BUILD_NUMBER}"
+        KUBE_CONFIG = credentials('kubeconfig') // Jenkins credentials ID for kubeconfig file
+        DOCKER_CREDENTIALS_ID = 'dockerhub-creds' // Jenkins credentials ID for DockerHub/ACR
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Restore & Build') {
+            steps {
+                sh 'dotnet restore'
+                sh 'dotnet build --configuration Release'
+            }
+        }
+
+        stage('Publish') {
+            steps {
+                sh 'dotnet publish -c Release -o out'
+            }
+        }
+
+        stage('Docker Build & Push') {
+            steps {
+                script {
+                    docker.withRegistry('', DOCKER_CREDENTIALS_ID) {
+                        sh """
+                            docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
+                            docker push ${IMAGE_NAME}:${IMAGE_TAG}
+                        """
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_FILE')]) {
+                    sh '''
+                        export KUBECONFIG=$KUBECONFIG_FILE
+                        kubectl set image deployment/demoeventmanagerworker your-container-name=${IMAGE_NAME}:${IMAGE_TAG} --namespace=democode
+                        kubectl rollout status deployment/demoeventmanagerworker --namespace=democode
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline completed.'
+        }
+        success {
+            echo 'Deployment succeeded!'
+        }
+        failure {
+            echo 'Deployment failed!'
+        }
+    }
+}
