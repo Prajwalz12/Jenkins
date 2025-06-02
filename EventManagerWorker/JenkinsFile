@@ -5,20 +5,27 @@ pipeline {
             args '-v /var/run/docker.sock:/var/run/docker.sock -u root' // So docker commands inside agent can access host docker
         }
     }
+
     environment {
         IMAGE_NAME = "demoeventmanagerworker/qa"
         IMAGE_TAG = "v1.${BUILD_NUMBER}"
         KUBE_CONFIG = credentials('kubeconfig') // Jenkins credentials ID for kubeconfig file
-        DOCKER_CREDENTIALS_ID = 'dockerhub-creds' // Jenkins credentials ID for DockerHub/ACR
+        DOCKER_CREDENTIALS_ID = 'dockerhub-creds' // Jenkins DockerHub credentials ID
     }
+
     stages {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh "cd EventManagerWorker && docker build -f Dockerfile -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                    // Build from correct context and Dockerfile path
+                    sh """
+                        export DOCKER_BUILDKIT=0
+                        docker build -f EventManagerWorker/Dockerfile -t ${IMAGE_NAME}:${IMAGE_TAG} EventManagerWorker
+                    """
                 }
             }
         }
+
         stage('Docker Login & Push') {
             steps {
                 script {
@@ -28,12 +35,13 @@ pipeline {
                 }
             }
         }
+
         stage('Deploy to Kubernetes') {
             steps {
                 withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_FILE')]) {
                     sh '''
                         export KUBECONFIG=$KUBECONFIG_FILE
-                        kubectl set image deployment/demoeventmanagerworker your-container-name=${IMAGE_NAME}:${IMAGE_TAG} --namespace=democode
+                        kubectl set image deployment/demoeventmanagerworker your-container-name=''' + "${IMAGE_NAME}:${IMAGE_TAG}" + ''' --namespace=democode
                         kubectl rollout status deployment/demoeventmanagerworker --namespace=democode
                     '''
                 }
