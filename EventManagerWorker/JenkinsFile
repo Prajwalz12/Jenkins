@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'docker:latest'
+            image 'prajwal1209/docker-agent:latest'
             args '-v /var/run/docker.sock:/var/run/docker.sock -u root' // So docker commands inside agent can access host docker
         }
     }
@@ -20,7 +20,7 @@ pipeline {
                     // Build from correct context and Dockerfile path
                     sh """
                         export DOCKER_BUILDKIT=0
-                        docker build -f EventManagerWorker/DockerFile -t ${IMAGE_NAME}:${IMAGE_TAG} EventManagerWorker
+                        docker build -f EventManagerWorker/Dockerfile -t ${IMAGE_NAME}:${IMAGE_TAG} EventManagerWorker
                     """
                 }
             }
