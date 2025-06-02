@@ -1,51 +1,33 @@
 pipeline {
     agent {
         docker {
-            image 'mcr.microsoft.com/dotnet/sdk:8.0' // Use the appropriate SDK version
-            args '-v /var/run/docker.sock:/var/run/docker.sock' // Mount Docker socket
+            image 'docker:latest'
+            args '-v /var/run/docker.sock:/var/run/docker.sock' // So docker commands inside agent can access host docker
         }
     }
-
     environment {
         IMAGE_NAME = "demoeventmanagerworker/qa"
         IMAGE_TAG = "v1.${BUILD_NUMBER}"
         KUBE_CONFIG = credentials('kubeconfig') // Jenkins credentials ID for kubeconfig file
         DOCKER_CREDENTIALS_ID = 'dockerhub-creds' // Jenkins credentials ID for DockerHub/ACR
     }
-
     stages {
-        stage('Checkout') {
+        stage('Build Docker Image') {
             steps {
-                checkout scm
+                script {
+                    sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                }
             }
         }
-
-        stage('Restore & Build') {
-            steps {
-                sh 'dotnet restore'
-                sh 'dotnet build --configuration Release'
-            }
-        }
-
-        stage('Publish') {
-            steps {
-                sh 'dotnet publish -c Release -o out'
-            }
-        }
-
-        stage('Docker Build & Push') {
+        stage('Docker Login & Push') {
             steps {
                 script {
                     docker.withRegistry('', DOCKER_CREDENTIALS_ID) {
-                        sh """
-                            docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
-                            docker push ${IMAGE_NAME}:${IMAGE_TAG}
-                        """
+                        sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
                     }
                 }
             }
         }
-
         stage('Deploy to Kubernetes') {
             steps {
                 withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_FILE')]) {
