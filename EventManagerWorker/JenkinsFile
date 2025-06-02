@@ -20,7 +20,7 @@ pipeline {
                     // Build from correct context and Dockerfile path
                     sh """
                         export DOCKER_BUILDKIT=0
-                        docker build -f EventManagerWorker/Dockerfile -t ${IMAGE_NAME}:${IMAGE_TAG} EventManagerWorker
+                        docker build -f EventManagerWorker/DockerFile -t ${IMAGE_NAME}:${IMAGE_TAG} EventManagerWorker
                     """
                 }
             }
